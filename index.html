@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NawalKey</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1, h2, h3 {
+      color: white;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .tagline {
+      color: #22d3ee;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: #22d3ee;
+      color: black;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .section {
+      margin-top: 60px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    @media (min-width: 700px) {
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="tagline">NAWAL</div>
+    <h1>NawalKey</h1>
+    <h2>The last login you’ll ever need</h2>
+    <p>
+      End passwords. Stop credential theft. Make identity simple and secure.
+    </p>
+    <a href="#how" class="button">Learn More</a>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div id="how" class="section">
+    <h2>How It Works</h2>
+    <p>
+      NawalKey replaces passwords with secure identity verification using devices you already trust,
+      like your phone and laptop. There are no passwords to remember, steal, or reuse.
+    </p>
+
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Trusted Devices</h3>
+        <p>Your phone and laptop confirm your identity.</p>
+      </div>
+
+      <div class="card">
+        <h3>No Passwords</h3>
+        <p>Eliminates stored credentials and phishing risks.</p>
+      </div>
+
+      <div class="card">
+        <h3>Simple Recovery</h3>
+        <p>Secure recovery if a device is lost or replaced.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY NOW -->
+  <div class="section">
+    <h2>Why NawalKey?</h2>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>For People</h3>
+        <p>No more password resets or reused credentials.</p>
+      </div>
+
+      <div class="card">
+        <h3>For Organizations</h3>
+        <p>Reduce breaches and eliminate credential-based attacks.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section">
+    <h2>FAQ</h2>
+
+    <div class="card">
+      <h3>What is NawalKey?</h3>
+      <p>A passwordless identity system using trusted devices instead of passwords.</p>
+    </div>
+
+    <div class="card">
+      <h3>Do I still need passwords?</h3>
+      <p>No. NawalKey eliminates passwords entirely.</p>
+    </div>
+
+    <div class="card">
+      <h3>What if I lose a device?</h3>
+      <p>Secure recovery options allow you to regain access safely.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="section" style="text-align:center;">
+    <h2>Nawal</h2>
+    <p>Identity should be secure, simple, and invisible.</p>
+  </div>
+
+</div>
+
+</body>
+</html>
