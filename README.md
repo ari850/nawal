@@ -8,7 +8,7 @@ NawalKey is a passwordless identity platform designed to eliminate credential-ba
 
 ## Live Demo
 
-👉 https://ari850.github.io/nawal/
+https://ari850.github.io/nawal/
 
 ---
 
