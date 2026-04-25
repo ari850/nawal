@@ -8,8 +8,8 @@
   <style>
     :root {
       --bg: #000000;
-      --bg-soft: #0a0a0a;
       --panel: #050505;
+      --panel-2: #090909;
       --line: rgba(231, 198, 121, 0.18);
       --line-soft: rgba(255,255,255,0.08);
       --gold: #e7c679;
@@ -19,30 +19,22 @@
       --muted-2: #a1a1aa;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(231,198,121,0.08), transparent 28%),
+        radial-gradient(circle at 85% 25%, rgba(217,174,77,0.05), transparent 26%),
+        var(--bg);
       color: var(--text);
       font-family: 'Montserrat', sans-serif;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
 
     .container {
       width: min(1180px, calc(100% - 40px));
@@ -52,6 +44,11 @@
     .topbar {
       padding: 28px 0;
       border-bottom: 1px solid rgba(255,255,255,0.04);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(0,0,0,0.72);
     }
 
     .nav {
@@ -88,34 +85,34 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 34px;
+      gap: 26px;
     }
 
     .nav-links a {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 500;
       color: #f3f4f6;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
+    .nav-links a:hover { color: var(--gold); }
+
     .nav-cta {
-      padding: 12px 22px;
+      padding: 12px 20px;
       border: 1px solid var(--gold);
       border-radius: 999px;
       color: var(--gold);
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
     }
 
-    .hero {
-      padding: 70px 0 46px;
-    }
+    .hero { padding: 76px 0 54px; }
 
     .hero-grid {
       display: grid;
       grid-template-columns: 1.05fr 0.95fr;
-      gap: 36px;
+      gap: 42px;
       align-items: center;
     }
 
@@ -130,9 +127,9 @@
 
     .hero-title {
       margin: 0;
-      font-size: 66px;
+      font-size: clamp(42px, 6vw, 72px);
       font-weight: 500;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.20em;
       line-height: 0.96;
       color: white;
     }
@@ -149,7 +146,7 @@
 
     .hero-copy {
       margin: 28px 0 0;
-      max-width: 560px;
+      max-width: 650px;
       color: var(--muted);
       font-size: 17px;
       line-height: 1.8;
@@ -174,24 +171,15 @@
       min-width: 190px;
     }
 
-    .btn-primary {
-      background: var(--gold-strong);
-      color: #000;
-    }
-
-    .btn-primary:hover {
-      filter: brightness(1.07);
-    }
+    .btn-primary { background: var(--gold-strong); color: #000; }
+    .btn-primary:hover { filter: brightness(1.07); transform: translateY(-1px); }
 
     .btn-secondary {
       border: 1px solid var(--gold);
       color: white;
       background: transparent;
     }
-
-    .btn-secondary:hover {
-      background: rgba(231,198,121,0.08);
-    }
+    .btn-secondary:hover { background: rgba(231,198,121,0.08); transform: translateY(-1px); }
 
     .hero-right {
       display: grid;
@@ -219,14 +207,8 @@
       transform: translate(-50%, -50%);
     }
 
-    .logo-showcase {
-      text-align: center;
-    }
-
-    .logo-showcase img {
-      width: 250px;
-      margin: 0 auto 22px;
-    }
+    .logo-showcase { text-align: center; }
+    .logo-showcase img { width: 250px; margin: 0 auto 22px; }
 
     .nawal-wordmark {
       font-size: 60px;
@@ -272,7 +254,7 @@
     .features-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      margin-top: 56px;
+      margin-top: 58px;
       border-top: 1px solid rgba(255,255,255,0.08);
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
@@ -294,17 +276,16 @@
     }
 
     .feature-icon {
-      font-size: 44px;
+      font-size: 42px;
       color: var(--gold);
       margin-bottom: 16px;
     }
 
     .feature-box h3 {
       margin: 0 0 14px;
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 600;
       color: white;
-      letter-spacing: 0.02em;
     }
 
     .feature-box p {
@@ -316,6 +297,7 @@
 
     .section {
       padding: 86px 0;
+      border-top: 1px solid rgba(255,255,255,0.05);
     }
 
     .section-title-wrap {
@@ -323,32 +305,53 @@
       margin-bottom: 48px;
     }
 
-    .section-title-wrap .eyebrow {
-      margin-bottom: 14px;
-    }
+    .section-title-wrap .eyebrow { margin-bottom: 14px; }
 
     .section-title-wrap h2 {
       margin: 0;
       color: white;
-      font-size: 56px;
+      font-size: clamp(32px, 5vw, 54px);
       font-weight: 500;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
     }
 
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      align-items: stretch;
+    .section-title-wrap p {
+      max-width: 760px;
+      margin: 20px auto 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 16px;
     }
 
-    .step-card {
+    .stat-grid, .steps, .faq-grid, .audience-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .stat-grid { grid-template-columns: repeat(4, 1fr); }
+    .steps { grid-template-columns: repeat(3, 1fr); }
+    .audience-grid { grid-template-columns: repeat(2, 1fr); }
+    .faq-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .stat-card, .step-card, .faq-card, .audience-card, .quote-card, .pricing-card {
       border: 1px solid var(--line-soft);
       border-radius: 18px;
       padding: 26px;
-      background: #030303;
-      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.008));
+    }
+
+    .stat-card strong {
+      display: block;
+      color: var(--gold);
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .stat-card span {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
     }
 
     .step-number {
@@ -371,26 +374,18 @@
       margin-bottom: 18px;
     }
 
-    .step-card h3 {
+    .step-card h3, .faq-card h3, .audience-card h3, .pricing-card h3 {
       margin: 0 0 14px;
-      font-size: 24px;
+      color: white;
+      font-size: 20px;
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
     }
 
-    .step-card p {
+    .step-card p, .faq-card p, .audience-card p, .pricing-card p {
       margin: 0;
       color: var(--muted);
       line-height: 1.75;
       font-size: 15px;
-    }
-
-    .inspo-section {
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 90px 0 100px;
-      position: relative;
-      overflow: hidden;
     }
 
     .inspo-grid {
@@ -413,16 +408,12 @@
       margin: 0 auto;
     }
 
-    .inspo-content .eyebrow {
-      margin-bottom: 18px;
-    }
-
     .inspo-content p {
       color: #ececec;
       line-height: 2;
       font-size: 18px;
       margin: 0 0 24px;
-      max-width: 520px;
+      max-width: 620px;
     }
 
     .gold-rule {
@@ -432,133 +423,87 @@
       margin: 28px 0;
     }
 
-    .faq-grid {
+    .quote-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr 1fr;
       gap: 24px;
     }
 
-    .faq-card {
-      border: 1px solid var(--line-soft);
-      border-radius: 18px;
-      padding: 24px;
-      background: #040404;
+    .quote-card {
+      min-height: 220px;
     }
 
-    .faq-card h3 {
-      margin: 0 0 12px;
-      color: white;
-      font-size: 20px;
-    }
-
-    .faq-card p {
+    .quote-card p {
+      color: #eeeeee;
+      line-height: 1.85;
+      font-size: 16px;
       margin: 0;
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 15px;
+    }
+
+    .quote-card .name {
+      margin-top: 22px;
+      color: var(--gold);
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .pricing-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .price {
+      color: var(--gold);
+      font-size: 36px;
+      font-weight: 600;
+      margin: 12px 0;
     }
 
     .footer {
-      padding: 30px 0 60px;
+      padding: 42px 0 70px;
       border-top: 1px solid rgba(255,255,255,0.05);
       text-align: center;
       color: var(--muted-2);
       font-size: 14px;
     }
 
-    /* stylized A effect */
-    .hero-title,
-    .nawal-wordmark,
-    .brand-wordmark {
-      font-variant-ligatures: none;
-    }
+    .hero-title, .nawal-wordmark, .brand-wordmark { font-variant-ligatures: none; }
 
     @media (max-width: 1024px) {
-      .hero-grid,
-      .inspo-grid {
+      .hero-grid, .inspo-grid, .pricing-wrap, .quote-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero-right {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-divider {
-        display: none;
-      }
-
-      .logo-showcase img {
-        width: 220px;
-      }
-
-      .nawal-wordmark {
-        font-size: 50px;
-      }
+      .hero-right { grid-template-columns: 1fr; }
+      .hero-divider { display: none; }
+      .logo-showcase img { width: 220px; }
+      .nawal-wordmark { font-size: 50px; }
+      .stat-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 820px) {
-      .nav-links {
-        display: none;
-      }
-
-      .features-row,
-      .steps,
-      .faq-grid {
+      .nav-links { display: none; }
+      .features-row, .steps, .faq-grid, .audience-grid, .stat-grid {
         grid-template-columns: 1fr;
       }
 
-      .feature-box:not(:last-child)::after {
-        display: none;
-      }
-
-      .section-title-wrap h2 {
-        font-size: 38px;
-      }
-
-      .hero-title {
-        font-size: 48px;
-      }
-
-      .nawal-wordmark {
-        font-size: 42px;
-        letter-spacing: 0.18em;
-      }
-
-      .brand-wordmark {
-        font-size: 16px;
-        letter-spacing: 0.28em;
-      }
+      .feature-box:not(:last-child)::after { display: none; }
+      .brand-wordmark { font-size: 16px; letter-spacing: 0.28em; }
+      .nawal-wordmark { font-size: 42px; letter-spacing: 0.18em; }
     }
 
     @media (max-width: 560px) {
-      .container {
-        width: min(100% - 28px, 1180px);
-      }
-
-      .hero-title {
-        font-size: 40px;
-        letter-spacing: 0.16em;
-      }
-
-      .hero-subtitle {
-        font-size: 16px;
-      }
-
-      .btn {
-        width: 100%;
-        min-width: 0;
-      }
-
-      .feature-box h3 {
-        font-size: 24px;
-      }
-
-      .inspo-content p {
-        font-size: 16px;
-      }
+      .container { width: min(100% - 28px, 1180px); }
+      .hero-title { letter-spacing: 0.14em; }
+      .hero-subtitle { font-size: 16px; }
+      .btn { width: 100%; min-width: 0; }
     }
   </style>
 </head>
+
 <body>
   <header class="topbar">
     <div class="container">
@@ -571,11 +516,12 @@
         </div>
 
         <div class="nav-links">
+          <a href="#why">Why</a>
           <a href="#how">How It Works</a>
-          <a href="#why">Why NawalKey</a>
           <a href="#security">Security</a>
+          <a href="#pricing">Pricing</a>
           <a href="#faq">FAQ</a>
-          <a class="nav-cta" href="#how">Get Started</a>
+          <a class="nav-cta" href="#pricing">Get Started</a>
         </div>
       </nav>
     </div>
@@ -590,12 +536,12 @@
             <h1 class="hero-title">NΛWΛLKEY</h1>
             <div class="hero-subtitle">The last login you’ll ever need</div>
             <p class="hero-copy">
-              NawalKey replaces passwords with trusted device verification to protect your identity. No passwords. No resets. No compromises.
+              NawalKey replaces passwords with trusted device verification across phones, laptops, desktops, and enterprise systems. No passwords. No resets. No centralized credential database waiting to be breached.
             </p>
 
             <div class="hero-actions">
               <a href="#how" class="btn btn-primary">See How It Works</a>
-              <a href="#security" class="btn btn-secondary">Explore Security</a>
+              <a href="#faq" class="btn btn-secondary">Read FAQ</a>
             </div>
           </div>
 
@@ -619,17 +565,48 @@
           <div class="feature-box">
             <div class="feature-icon">🛡</div>
             <h3>Built to Protect</h3>
-            <p>No passwords. No breaches. Your identity stays yours.</p>
+            <p>No stored passwords. No reusable credentials. Your identity stays yours.</p>
           </div>
           <div class="feature-box">
             <div class="feature-icon">◎</div>
             <h3>Made for You</h3>
-            <p>Simple, seamless, and secure across all your devices.</p>
+            <p>Use the devices you already trust, including phones, laptops, and tablets.</p>
           </div>
           <div class="feature-box">
             <div class="feature-icon">⌘</div>
-            <h3>Always in Sync</h3>
-            <p>Your identity, available wherever you are.</p>
+            <h3>Ready for Work</h3>
+            <p>Integrates with enterprise identity systems to reduce password-related overhead.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="eyebrow">Why Now</div>
+          <h2>Passwords are the weak point</h2>
+          <p>
+            Credential-based attacks are still a leading cause of data breaches, and password management creates friction for both individuals and organizations.
+          </p>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat-card">
+            <strong>80%+</strong>
+            <span>of data breaches involve stolen or reused passwords.</span>
+          </div>
+          <div class="stat-card">
+            <strong>170</strong>
+            <span>passwords managed by the average user across services.</span>
+          </div>
+          <div class="stat-card">
+            <strong>$700M</strong>
+            <span>settlement tied to the Equifax data breach.</span>
+          </div>
+          <div class="stat-card">
+            <strong>$0</strong>
+            <span>cost for individual users to start using NawalKey.</span>
           </div>
         </div>
       </div>
@@ -646,28 +623,52 @@
           <div class="step-card">
             <div class="step-number">1</div>
             <div class="step-icon">⌑</div>
-            <h3>Verify Devices</h3>
-            <p>Your trusted devices prove who you are.</p>
+            <h3>Choose NawalKey</h3>
+            <p>Select “Log in with NawalKey” on a supported website or app.</p>
           </div>
 
           <div class="step-card">
             <div class="step-number">2</div>
             <div class="step-icon">◎</div>
             <h3>Confirm Identity</h3>
-            <p>Biometric or device security confirms your identity.</p>
+            <p>Unlock your trusted device using Face ID, fingerprint, or a PIN.</p>
           </div>
 
           <div class="step-card">
             <div class="step-number">3</div>
             <div class="step-icon">✓</div>
             <h3>Access Granted</h3>
-            <p>You’re in. No passwords, no risks, no friction.</p>
+            <p>You are signed in instantly without entering or storing a password.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="security" class="inspo-section">
+    <section class="section" id="audience">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="eyebrow">Built for people and organizations</div>
+          <h2>One identity layer, two use cases</h2>
+        </div>
+
+        <div class="audience-grid">
+          <div class="audience-card">
+            <h3>For individuals</h3>
+            <p>
+              NawalKey removes the stress of remembering, resetting, and reusing passwords. It works across trusted personal devices and keeps login simple while improving security.
+            </p>
+          </div>
+          <div class="audience-card">
+            <h3>For businesses</h3>
+            <p>
+              NawalKey integrates with platforms such as Microsoft Entra, Google Workspace, and Okta to reduce password-related risk, improve employee access, and support audit and recovery workflows.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="security" class="section">
       <div class="container">
         <div class="inspo-grid">
           <div class="inspo-card">
@@ -677,12 +678,59 @@
           <div class="inspo-content">
             <div class="eyebrow">Inspired by the Jaguar (Balam)</div>
             <p>
-              In Mayan culture, the jaguar (Balam) is a powerful guardian of the night, representing protection, strength, and the ability to move unseen between worlds.
+              The name “Nawal” is inspired by the Mayan concept of personal essence and identity. The jaguar, or Balam, represents protection, vigilance, and strength.
             </p>
             <div class="gold-rule"></div>
             <p>
-              NawalKey draws from this energy to protect your identity and keep you secure in the digital world.
+              NawalKey draws from this symbolism to protect digital identity and keep access tied to the person, not to vulnerable credentials.
             </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="eyebrow">What people are saying</div>
+          <h2>Designed for real-world access</h2>
+        </div>
+
+        <div class="quote-grid">
+          <div class="quote-card">
+            <p>
+              “Password management has always been a bottleneck and a vulnerability. NawalKey changes that completely. By removing passwords and relying on trusted devices, it reduces risk while making access seamless for our teams.”
+            </p>
+            <div class="name">Elisa E.<br>Director of Employment Tax Implementation, ADP</div>
+          </div>
+
+          <div class="quote-card">
+            <p>
+              “Passwords were always a hassle, especially across devices and on public Wi-Fi. With NawalKey, I just use my phone and I’m in. It’s faster, easier, and I don’t have to worry about security anymore.”
+            </p>
+            <div class="name">Jeff S.<br>Consultant and Travel Blogger</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="section">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="eyebrow">Pricing</div>
+          <h2>Free for people, scalable for teams</h2>
+        </div>
+
+        <div class="pricing-wrap">
+          <div class="pricing-card">
+            <h3>Personal</h3>
+            <div class="price">$0</div>
+            <p>Free for personal use, supporting up to five devices and unlimited accounts.</p>
+          </div>
+          <div class="pricing-card">
+            <h3>Business</h3>
+            <div class="price">$3–$10</div>
+            <p>Per user/month depending on features and scale. Enterprise plans include centralized management, audit logs, IT recovery tools, and volume discounts.</p>
           </div>
         </div>
       </div>
@@ -693,27 +741,58 @@
         <div class="section-title-wrap">
           <div class="eyebrow">FAQ</div>
           <h2>Questions people ask first</h2>
+          <p>Clear answers for everyday users and organizations considering a passwordless future.</p>
         </div>
 
         <div class="faq-grid">
           <div class="faq-card">
             <h3>What is NawalKey?</h3>
-            <p>NawalKey is a passwordless identity system that uses trusted devices instead of passwords to verify users securely.</p>
+            <p>NawalKey is a passwordless identity system that replaces passwords entirely. Unlike a password manager, it does not store passwords in a vault. It verifies identity using trusted devices.</p>
           </div>
 
           <div class="faq-card">
-            <h3>Who is it for?</h3>
-            <p>NawalKey is designed for both individuals and organizations that want a safer, simpler way to log in.</p>
+            <h3>How do I log in?</h3>
+            <p>Select “Log in with NawalKey,” unlock your trusted device with Face ID, fingerprint, or a PIN, and you are signed in instantly without entering a password.</p>
           </div>
 
           <div class="faq-card">
-            <h3>Do I still need passwords?</h3>
-            <p>No. NawalKey is designed to eliminate passwords entirely for supported services.</p>
+            <h3>Can I use multiple devices?</h3>
+            <p>Yes. NawalKey works across phones, laptops, tablets, and desktops. New devices are approved by an existing trusted device before being added.</p>
           </div>
 
           <div class="faq-card">
-            <h3>What if I lose a device?</h3>
-            <p>Secure recovery options allow you to regain access safely without returning to weak password-based methods.</p>
+            <h3>What if I lose a trusted device?</h3>
+            <p>Your other devices continue to work. If it was your only device, secure recovery options such as a recovery code or IT verification can restore access.</p>
+          </div>
+
+          <div class="faq-card">
+            <h3>Could someone unlock my accounts if they steal my device?</h3>
+            <p>No. The device must still be unlocked using Face ID, fingerprint, or a PIN. Lost devices can also be revoked from another trusted device or a secure portal.</p>
+          </div>
+
+          <div class="faq-card">
+            <h3>Do websites and apps need to support it?</h3>
+            <p>NawalKey works best with websites and apps that support passkeys. For services still transitioning, it can operate alongside current login methods.</p>
+          </div>
+
+          <div class="faq-card">
+            <h3>What if my employer uses a different system?</h3>
+            <p>NawalKey is designed to work alongside existing identity systems such as Microsoft Entra, Google Workspace, and Okta through standard APIs.</p>
+          </div>
+
+          <div class="faq-card">
+            <h3>Is my data private?</h3>
+            <p>Yes. NawalKey does not store or see your passwords. Authentication happens locally on your device, and only a cryptographic proof is shared with the service.</p>
+          </div>
+
+          <div class="faq-card">
+            <h3>Do I need to start over?</h3>
+            <p>No. NawalKey works with existing accounts and allows gradual adoption as services move toward passwordless login.</p>
+          </div>
+
+          <div class="faq-card">
+            <h3>Am I protected if a website gets hacked?</h3>
+            <p>Yes. Because there are no stored passwords, there are no credentials for attackers to steal and reuse.</p>
           </div>
         </div>
       </div>
