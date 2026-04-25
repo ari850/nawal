@@ -611,7 +611,69 @@
         </div>
       </div>
     </section>
+    <section class="section" id="how-tech">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="eyebrow">How It Works (Under the Hood)</div>
+          <h2>Built on modern cryptography</h2>
+          <p>
+            NawalKey replaces passwords with a secure, device-based authentication model using public-key cryptography and hardware-backed security.
+          </p>
+        </div>
+    
+        <div class="steps">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Key Generation</h3>
+            <p>
+              Each trusted device generates a unique cryptographic key pair. The private key is stored securely in a Trusted Execution Environment (TEE) or secure enclave and never leaves the device.
+            </p>
+          </div>
+    
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>Challenge–Response</h3>
+            <p>
+              When logging in, the server sends a unique challenge. Your device signs this challenge using the private key after you unlock it with biometrics or a PIN.
+            </p>
+          </div>
+    
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Verification</h3>
+            <p>
+              The server verifies the signed response using the stored public key. Since no shared secrets are transmitted, this prevents phishing, replay attacks, and credential theft.
+            </p>
+          </div>
+        </div>
 
+    <div class="steps" style="margin-top: 24px;">
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <h3>Multi-Device Identity</h3>
+        <p>
+          Each device has its own key pair. New devices must be approved by an existing trusted device, creating a distributed identity model without a single point of failure.
+        </p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">5</div>
+        <h3>Recovery + Revocation</h3>
+        <p>
+          Lost or compromised devices can be revoked without affecting others. Recovery is handled through secure keys or enterprise identity verification.
+        </p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">6</div>
+        <h3>Standards-Based</h3>
+        <p>
+          NawalKey integrates using FIDO2 and WebAuthn, making it compatible with modern browsers, operating systems, and enterprise identity platforms.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
     <section id="how" class="section">
       <div class="container">
         <div class="section-title-wrap">
